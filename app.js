@@ -1,50 +1,74 @@
+const categoryUrls = {
+    'game': 'https://www.nvidia.com/en-us/geforce/ace/',
+    'doc': 'https://www.notion.so/product/ai',
+    'tool': 'https://github.com/features/copilot'
+};
+
+function filterAI(category) {
+    if (categoryUrls[category]) {
+        window.location.href = categoryUrls[category];
+    } else if (category === 'all') {
+        // Optional: handle the "all" case, e.g., by scrolling to the grid
+        document.getElementById('ai-grid').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const aiServices = [
         {
-            name: 'Service A',
-            description: 'This is a description for service A.',
-            url: 'https://example.com/a'
+            name: 'ChatGPT',
+            description: 'A powerful language model by OpenAI.',
+            url: 'https://chat.openai.com'
         },
         {
-            name: 'Service B',
-            description: 'This is a description for service B.',
-            url: 'https://example.com/b'
+            name: 'Google Gemini',
+            description: 'A family of multimodal AI models by Google.',
+            url: 'https://gemini.google.com'
         },
         {
-            name: 'Service C',
-            description: 'This is a description for service C.',
-            url: 'https://example.com/c'
+            name: 'Midjourney',
+            description: 'An independent research lab that produces an artificial intelligence program that creates images from textual descriptions.',
+            url: 'https://www.midjourney.com'
         },
         {
-            name: 'Service D',
-            description: 'This is a description for service D.',
-            url: 'https://example.com/d'
+            name: 'DALL-E 3',
+            description: 'An AI system by OpenAI that can create realistic images and art from a description in natural language.',
+            url: 'https://openai.com/dall-e-3'
         },
         {
-            name: 'Service E',
-            description: 'This is a description for service E.',
-            url: 'https://example.com/e'
+            name: 'GitHub Copilot',
+            description: 'Your AI pair programmer.',
+            url: 'https://github.com/features/copilot'
         },
         {
-            name: 'Service F',
-            description: 'This is a description for service F.',
-            url: 'https://example.com/f'
+            name: 'Notion AI',
+            description: 'Write faster, think bigger, and augment creativity. Right inside Notion.',
+            url: 'https://www.notion.so/product/ai'
         }
     ];
 
     const aiGrid = document.getElementById('ai-grid');
-    aiGrid.innerHTML = ''; // Clear the "A", "B", "C" etc. cards
+    if (aiGrid) {
+        aiGrid.innerHTML = ''; // Clear existing content
 
-    aiServices.forEach(service => {
-        const card = document.createElement('div');
-        card.classList.add('ai-card');
+        aiServices.forEach(service => {
+            const card = document.createElement('div');
+            card.classList.add('ai-card');
+            
+            const thumbnailUrl = `https://api.mshots.io/v1/screenshot?url=${service.url}`;
 
-        card.innerHTML = `
-            <h3>${service.name}</h3>
-            <p>${service.description}</p>
-            <a href="${service.url}" target="_blank" class="play-btn">Play</a>
-        `;
+            card.innerHTML = `
+                <div class="thumbnail">
+                    <img src="${thumbnailUrl}" alt="${service.name} screenshot">
+                </div>
+                <div class="card-content">
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <a href="${service.url}" target="_blank" class="play-btn">Play</a>
+                </div>
+            `;
 
-        aiGrid.appendChild(card);
-    });
+            aiGrid.appendChild(card);
+        });
+    }
 });
