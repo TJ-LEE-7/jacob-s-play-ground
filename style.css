@@ -124,3 +124,33 @@ body { margin: 0; font-family: 'Pretendard', sans-serif; background: var(--bg-li
     width: 100%; padding: 15px; background: gold;
     border: none; font-weight: bold; border-radius: 10px; cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column grid on mobile */
+    }
+
+    .logo-main {
+        font-size: 50px; /* smaller font for banner */
+        letter-spacing: 5px;
+    }
+
+    .logo-sub {
+        font-size: 16px;
+    }
+
+    .main-banner {
+        padding: 60px 20px;
+    }
+}
