@@ -16,13 +16,13 @@ function filterAI(category) {
 document.addEventListener('DOMContentLoaded', () => {
     const aiServices = [
         {
-            name: 'ChatGPT',
-            description: 'A powerful language model by OpenAI.',
-            url: 'https://chat.openai.com'
+            name: '나만의 자서전/동화 만들기',
+            description: '당신만의 특별한 자서전/동화를 만들어보세요',
+            url: 'https://jacob-2.pages.dev'
         },
         {
-            name: 'Google Gemini',
-            description: 'A family of multimodal AI models by Google.',
+            name: '나만의 올림픽',
+            description: '자신만의 특별한 주제로 올림픽을 진행해봐요!',
             url: 'https://gemini.google.com'
         },
         {
